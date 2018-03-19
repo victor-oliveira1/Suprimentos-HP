@@ -1,7 +1,7 @@
 # Tinta-HP
 usage: tinta_hp.py [-h] host  
 
-Retorna o nível de tinta das impressoras HP  
+Retorna o nível de tinta das tinta das impressoras em rede da HP  
 
 positional arguments:  
   host        Endereço IP da impressora  
