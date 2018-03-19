@@ -7,8 +7,8 @@ import argparse
 def get_colors(xml):
     colors = dict()
     for i in xml[2]:
-        name = i[0].text
-        percentage = i[4].text
+        name = i.find('{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}MarkerColor').text
+        percentage = i.find('{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}ConsumableRawPercentageLevelRemaining').text
         colors.update({name : percentage})
     return colors
 
