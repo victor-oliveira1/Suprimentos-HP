@@ -19,7 +19,7 @@ def get_xml(host):
     xml = ET.fromstring(raw_xml)
     return xml
 
-parser = argparse.ArgumentParser(description='Retorna o nível de tinta das impressoras HP')
+parser = argparse.ArgumentParser(description='Retorna o nível de tinta das impressoras em rede da HP')
 parser.add_argument('host', help='Endereço IP da impressora')
 parser.add_argument('-t', '--tinta', help='Número da tinta', type=int)
 args = parser.parse_args()
