@@ -4,14 +4,11 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import argparse
 
-def get_xml(host):
+def get_colors(host):
     url = 'http://{}/DevMgmt/ProductUsageDyn.xml'.format(host)
     req = urllib.request.urlopen(url)
     raw_xml = req.read().decode()
     xml = ET.fromstring(raw_xml)
-    return xml
-
-def get_colors(xml):
     colors = dict()
     for root in xml:
         if 'ConsumableSubunit' in root.tag:
@@ -30,8 +27,7 @@ parser.add_argument('-t', '--tinta', help='Número da tinta', type=int)
 args = parser.parse_args()
 
 try:
-    xml = get_xml(args.host)
-    colors = get_colors(xml)
+    colors = get_colors(args.host)
     if args.tinta or args.tinta == 0:
         colors = list(colors.items())[args.tinta]
         print('{}: {}%'.format(colors[0], colors[1]))
