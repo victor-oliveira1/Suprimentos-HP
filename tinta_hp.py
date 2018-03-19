@@ -4,20 +4,22 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import argparse
 
-def get_colors(xml):
-    colors = dict()
-    for i in xml[2]:
-        name = i.find('{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}MarkerColor').text
-        percentage = i.find('{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}ConsumableRawPercentageLevelRemaining').text
-        colors.update({name : percentage})
-    return colors
-
 def get_xml(host):
     url = 'http://{}/DevMgmt/ProductUsageDyn.xml'.format(host)
     req = urllib.request.urlopen(url)
     raw_xml = req.read().decode()
     xml = ET.fromstring(raw_xml)
     return xml
+
+def get_colors(xml):
+    colors = dict()
+    for tmp in xml:
+        if 'ConsumableSubunit' in tmp.tag:
+            for i in tmp:
+                name = i.find('{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}MarkerColor').text
+                percentage = i.find('{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}ConsumableRawPercentageLevelRemaining').text
+                colors.update({name : percentage})
+    return colors
 
 parser = argparse.ArgumentParser(description='Retorna o nível de tinta das impressoras em rede da HP')
 parser.add_argument('host', help='Endereço IP da impressora')
