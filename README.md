@@ -8,8 +8,10 @@ positional arguments:
 
 optional arguments:  
   -h, --help  show this help message and exit  
-  
-python3 tinta_hp.py 196.1.1.49  
+
+### Exemplo de uso:
+
+python3 ./tinta_hp.py 196.1.1.49  
 Magenta: 73%  
 Cyan: 56%  
 Yellow: 33%  
