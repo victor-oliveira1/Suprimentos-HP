@@ -8,6 +8,8 @@ positional arguments:
 
 optional arguments:  
   -h, --help  show this help message and exit  
+  -c CARTUCHO, --cartucho CARTUCHO
+                        Número do cartucho
 
 ### Exemplo de uso:
 
