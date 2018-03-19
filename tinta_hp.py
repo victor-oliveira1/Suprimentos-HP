@@ -34,6 +34,6 @@ try:
         for color in colors:
             print('{}: {}%'.format(color, colors[color]))
 except IndexError:
-    print('ERRO: Número da tinta incorreta')
+    print('ERRO: Número da tinta incorreto')
 except:
     print('ERRO: Não é uma impressora HP ou esta não é suportada')
