@@ -21,19 +21,19 @@ def get_xml(host):
 
 parser = argparse.ArgumentParser(description='Retorna o nível de tinta das impressoras HP')
 parser.add_argument('host', help='Endereço IP da impressora')
-parser.add_argument('-c', '--cartucho', help='Número do cartucho', type=int)
+parser.add_argument('-t', '--tinta', help='Número da tinta', type=int)
 args = parser.parse_args()
 
 try:
     xml = get_xml(args.host)
     colors = get_colors(xml)
-    if args.cartucho or args.cartucho == 0:
-        colors = list(colors.items())[args.cartucho]
+    if args.tinta or args.tinta == 0:
+        colors = list(colors.items())[args.tinta]
         print('{}: {}%'.format(colors[0], colors[1]))
     else:
         for color in colors:
             print('{}: {}%'.format(color, colors[color]))
 except IndexError:
-    print('ERRO: Número do cartucho incorreto')
+    print('ERRO: Número da tinta incorreta')
 except:
     print('ERRO: Não é uma impressora HP ou esta não é suportada')
