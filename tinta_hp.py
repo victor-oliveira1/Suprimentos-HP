@@ -12,13 +12,15 @@ def get_xml(host):
     return xml
 
 def get_colors(xml):
-    ns = '{http://www.hp.com/schemas/imaging/con/dictionaries/1.0/}'
     colors = dict()
-    for tmp in xml:
-        if 'ConsumableSubunit' in tmp.tag:
-            for i in tmp:
-                name = i.find('{}MarkerColor'.format(ns)).text
-                percentage = i.find('{}ConsumableRawPercentageLevelRemaining'.format(ns)).text
+    for root in xml:
+        if 'ConsumableSubunit' in root.tag:
+            for ink in root:
+                for item in ink:
+                    if 'MarkerColor' in item.tag:
+                        name = item.text
+                    elif 'ConsumableRawPercentageLevelRemaining' in item.tag:
+                        percentage = item.text
                 colors.update({name : percentage})
     return colors
 
