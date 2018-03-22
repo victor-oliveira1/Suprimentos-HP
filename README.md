@@ -13,7 +13,7 @@ optional arguments:
 
 ### Exemplo de uso:
 
-python3 ./tinta_hp.py 196.1.1.49  
+python3 ./suprimentos_hp.py 196.1.1.49  
 Magenta: 73%  
 Cyan: 56%  
 Yellow: 33%  
