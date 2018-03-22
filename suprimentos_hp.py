@@ -21,7 +21,7 @@ def get_colors(host):
                 colors.update({name : percentage})
     return colors
 
-parser = argparse.ArgumentParser(description='Retorna o nível de tinta das impressoras em rede da HP')
+parser = argparse.ArgumentParser(description='Retorna o nível dos suprimentos das impressoras em rede HP')
 parser.add_argument('host', help='Endereço IP da impressora')
 parser.add_argument('-t', '--tinta', help='Número da tinta', type=int)
 args = parser.parse_args()
