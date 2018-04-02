@@ -24,14 +24,13 @@ def get_colors(host):
         url = 'http://{}/index.htm?cat=info&page=printerInfo'.format(host)
         req = urllib.request.urlopen(url)
         page = req.read().decode()
-        if 'blackink=' in page:
-            black_index = page.find('blackink=')
-            black_level = page[black_index:black_index + 11].split('=')[1].split(';')[0]
-        if 'colorink=' in page:
-            color_index = page.find('colorink=')
-            color_level = page[color_index:color_index + 11].split('=')[1].split(';')[0]
-        colors.update({'Black' : black_level,
-                       'Tricolor' : color_level})
+        texts = ('blackink=', 'colorink=')
+        for text in texts:
+            if text in page:
+                ink_name = text.capitalize().split('ink')[0]
+                ink_index = page.find(text)
+                ink_level = page[ink_index:ink_index + 11].split('=')[1].split(';')[0]
+                colors.update({ink_name : ink_level})
     return colors
 
 parser = argparse.ArgumentParser(description='Retorna o nível de tinta das impressoras em rede da HP')
