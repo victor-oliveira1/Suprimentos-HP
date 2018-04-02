@@ -48,5 +48,7 @@ try:
             print('{}: {}%'.format(color, colors[color]))
 except IndexError:
     print('ERRO: Número da tinta incorreto')
+except KeyboardInterrupt:
+    print('\nInterrompido')
 except:
     print('ERRO: Não é uma impressora HP ou esta não é suportada')
